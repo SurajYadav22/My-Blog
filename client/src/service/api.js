@@ -13,11 +13,6 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   function (config) {
-    if (config.TYPE.params) {
-      config.params = config.TYPE.params;
-    } else if (config.TYPE.query) {
-      config.url = config.url + "/" + config.TYPE.query;
-    }
     return config;
   },
   function (error) {
@@ -88,10 +83,10 @@ for (const [key, value] of Object.entries(SERVICE_URLS)) {
       url: value.url,
       data: value.method === "DELETE" ? "" : body,
       responseType: value.responseType,
-      headers: {
-        authorization: getAccessToken(),
-      },
-      TYPE: getType(value, body),
+      // headers: {
+      //   authorization: getAccessToken(),
+      // },
+
       onUploadProgress: function (progressEvent) {
         if (showUploadProgress) {
           let percentCompleted = Math.round(
