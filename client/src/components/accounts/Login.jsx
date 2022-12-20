@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, styled, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 
 const Component = styled(Box)`
   width: 400px;
@@ -46,7 +47,7 @@ const SignupButton = styled(Button)`
 
 const Text = styled(Typography)`
   color: #878787;
-  font-size: 12px;
+  font-size: 14px;
 `;
 
 // const Error = styled(Typography)`
@@ -57,21 +58,68 @@ const Text = styled(Typography)`
 //   font-weight: 600;
 // `;
 
+const signUpInitialData = {
+  name: "",
+  username: "",
+  password: "",
+};
+
 const Login = () => {
+  const [account, toggleAccount] = useState("login");
+  const [signUpData, setSignUpData] = useState(signUpInitialData);
+
+  const toggleSignUp = () => {
+    account === "login" ? toggleAccount("signup") : toggleAccount("login");
+  };
+
+  const handleChange = (e) => {
+    setSignUpData({ ...signUpData, [e.target.name]: e.target.value });
+    console.log(e.target.name, e.target.value);
+  };
+
   const imageURL =
     "https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png";
   return (
     <Component>
       <Box>
         <Image src={imageURL} alt="blog" />
-
-        <Wrapper>
-          <TextField variant="standard" />
-          <TextField variant="standard" />
-          <LoginButton variant="contained">Login</LoginButton>
-          <Text style={{ textAlign: "center" }}>OR</Text>
-          <SignupButton>Create an account</SignupButton>
-        </Wrapper>
+        {account === "login" ? (
+          <Wrapper>
+            <TextField variant="standard" label="Enter username" />
+            <TextField variant="standard" label="Enter password" />
+            <LoginButton variant="contained">Login</LoginButton>
+            <Text style={{ textAlign: "center" }}>OR</Text>
+            <SignupButton onClick={() => toggleSignUp()}>
+              Create an account
+            </SignupButton>
+          </Wrapper>
+        ) : (
+          <Wrapper>
+            <TextField
+              variant="standard"
+              label="Enter name"
+              onChange={(e) => handleChange(e)}
+              name="name"
+            />
+            <TextField
+              variant="standard"
+              label="Enter username"
+              onChange={(e) => handleChange(e)}
+              name="username"
+            />
+            <TextField
+              variant="standard"
+              label="Enter password"
+              onChange={(e) => handleChange(e)}
+              name="password"
+            />
+            <SignupButton>Signup</SignupButton>
+            <Text style={{ textAlign: "center" }}>OR</Text>
+            <LoginButton variant="contained" onClick={() => toggleSignUp()}>
+              Already have an account
+            </LoginButton>
+          </Wrapper>
+        )}
       </Box>
     </Component>
   );
