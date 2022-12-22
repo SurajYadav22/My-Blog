@@ -3,6 +3,7 @@ import { Box, Button, styled, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { API } from "../../service/api";
 import { DataContext } from "../../context/DataProvider";
+import { useNavigate } from "react-router-dom";
 
 const Component = styled(Box)`
   width: 400px;
@@ -71,12 +72,13 @@ const loginInitialData = {
   password: "",
 };
 
-const Login = () => {
+const Login = ({ isUserAuthenticated }) => {
   const [account, toggleAccount] = useState("login");
   const [error, setError] = useState("");
   const [signUpData, setSignUpData] = useState(signUpInitialData);
   const [login, setLogin] = useState(loginInitialData);
   const { setAccount } = useContext(DataContext);
+  const navigate = useNavigate();
 
   const toggleSignUp = () => {
     account === "login" ? toggleAccount("signup") : toggleAccount("login");
@@ -121,6 +123,8 @@ const Login = () => {
         username: response.data.username,
         password: response.data.password,
       });
+      isUserAuthenticated(true);
+      navigate("/");
 
       setLogin(loginInitialData);
     } else {
