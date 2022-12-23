@@ -1,6 +1,7 @@
 import axios from "axios";
+
 import { API_NOTIFICATION_MESSAGES, SERVICE_URLS } from "../constants/config";
-import { getAccessToken } from "../utils/common-utils";
+import { getAccessToken, getType } from "../utils/common-utils";
 
 const API_URL = "http://localhost:8080";
 
@@ -14,6 +15,11 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   function (config) {
+    if (config.TYPE.params) {
+      config.params = config.TYPE.params;
+    } else if (config.TYPE.query) {
+      config.url = config.url + "/" + config.TYPE.query;
+    }
     return config;
   },
   function (error) {
@@ -23,11 +29,9 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   function (response) {
-    // Stop global loader here
     return processResponse(response);
   },
   function (error) {
-    // Stop global loader here
     return Promise.reject(ProcessError(error));
   }
 );
@@ -65,7 +69,6 @@ const ProcessError = async (error) => {
       code: "",
     };
   } else {
-    // Something happened in setting up the request that triggered an Error
     console.log("ERROR IN RESPONSE: ", error.toJSON());
     return {
       isError: true,
@@ -87,7 +90,7 @@ for (const [key, value] of Object.entries(SERVICE_URLS)) {
       headers: {
         authorization: getAccessToken(),
       },
-
+      TYPE: getType(value, body),
       onUploadProgress: function (progressEvent) {
         if (showUploadProgress) {
           let percentCompleted = Math.round(

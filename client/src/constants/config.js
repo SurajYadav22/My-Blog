@@ -1,5 +1,3 @@
-// API NOTIFICATION MESSAGES
-
 export const API_NOTIFICATION_MESSAGES = {
   loading: {
     title: "Loading...",
@@ -25,7 +23,7 @@ export const API_NOTIFICATION_MESSAGES = {
   },
 };
 
-// API SERVICE URL
+// These all are API end points.
 
 export const SERVICE_URLS = {
   userLogin: { url: "/login", method: "POST" },
