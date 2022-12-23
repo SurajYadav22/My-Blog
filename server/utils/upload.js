@@ -4,11 +4,11 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const userName = process.env.DB_USER_NAME;
+const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 
 const storage = new GridFsStorage({
-  url: `mongodb+srv://${userName}:${password}@blog-app.ttcecni.mongodb.net/?retryWrites=true&w=majority`,
+  url: `mongodb+srv://${username}:${password}@blog-app.ttcecni.mongodb.net/?retryWrites=true&w=majority`,
   options: { useNewUrlParser: true },
   file: (request, file) => {
     const match = ["image/png", "image/jpg"];

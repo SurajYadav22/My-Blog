@@ -1,14 +1,12 @@
 import mongoose from "mongoose";
 
-const Connection = async (userName, password) => {
-  const URL = `mongodb+srv://${userName}:${password}@blog-app.ttcecni.mongodb.net/?retryWrites=true&w=majority`;
+const Connection = async (username, password) => {
+  const URL = `mongodb+srv://${username}:${password}@blog-app.ttcecni.mongodb.net/?retryWrites=true&w=majority`;
   try {
-    mongoose.set("strictQuery", true);
     await mongoose.connect(URL, { useNewUrlParser: true });
-
-    console.log("Database connection established");
+    console.log("Database connected successfully");
   } catch (error) {
-    console.log("Error connecting to Database: " + error);
+    console.log("Error while connecting to the database ", error);
   }
 };
 
