@@ -2,7 +2,7 @@ import { styled, Box, Typography } from "@mui/material";
 
 const Image = styled(Box)`
   width: 100%;
-  background: url(https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg)
+  background: url(https://png.pngtree.com/background/20210709/original/pngtree-laptop-color-brush-coffee-cartoon-background-on-wooden-table-picture-image_945916.jpg)
     center/55% repeat-x #000;
   height: 50vh;
   display: flex;
@@ -11,9 +11,12 @@ const Image = styled(Box)`
   justify-content: center;
 `;
 
+//https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg
 const Heading = styled(Typography)`
-  font-size: 70px;
+  font-size: 50px;
   color: #ffffff;
+
+  font-family: BaskervilleFull;
   line-height: 1;
 `;
 
