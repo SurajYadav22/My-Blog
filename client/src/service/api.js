@@ -3,7 +3,9 @@ import axios from "axios";
 import { API_NOTIFICATION_MESSAGES, SERVICE_URLS } from "../constants/config";
 import { getAccessToken, getType } from "../utils/common-utils";
 
-const API_URL = "http://localhost:8080";
+// const API_URL = "http://localhost:8080";
+
+const API_URL = "https://combative-gold-windbreaker.cyclic.app";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
