@@ -3,7 +3,7 @@ import { Email } from "@mui/icons-material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const Banner = styled(Box)`
-  background-image: url(http://mrtaba.ir/image/bg2.jpg);
+  background-image: url(https://www.ashokleyland.com/backend/in/wp-content/uploads/sites/2/2021/02/Contact-us_topbanner_cropped.jpg);
   width: 100%;
   height: 50vh;
   background-position: left 0px top -100px;
