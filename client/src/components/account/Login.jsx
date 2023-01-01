@@ -83,7 +83,7 @@ const Login = ({ isUserAuthenticated }) => {
   const { setAccount } = useContext(DataContext);
 
   const imageURL =
-    "https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png";
+    "https://thersilentboy.com/wp-content/uploads/2022/11/how-to-become-the-world-best-blogger2.jpg";
 
   useEffect(() => {
     showError(false);
@@ -174,20 +174,24 @@ const Login = ({ isUserAuthenticated }) => {
           </Wrapper>
         ) : (
           <Wrapper>
+            {error && <Error>{error}</Error>}
             <TextField
               variant="standard"
+              value={signup.name}
               onChange={(e) => onInputChange(e)}
               name="name"
               label="Enter Name"
             />
             <TextField
               variant="standard"
+              value={signup.username}
               onChange={(e) => onInputChange(e)}
               name="username"
               label="Enter Username"
             />
             <TextField
               variant="standard"
+              value={signup.password}
               onChange={(e) => onInputChange(e)}
               name="password"
               label="Enter Password"
