@@ -4,11 +4,12 @@ I am student of Full stack web development.
 
 # FUNCTIONALITIES
 
-#### Users can able to Signup themselves.
-#### Users can able to Login themselves.
-#### Users can Read, Write, Update, Comment & Delete blog as well.
-#### User can comment and delete on a blog
-#### Users also can see other users blogs.
+### Users can able to Signup themselves.
+### Users can able to Login themselves.
+### Users can Read, Write, Update, Comment & Delete blog as well.
+### User can comment and delete on a blog.
+### Users can read and write blogs categories-wise.
+### Users also can see other users blogs.
 
 # Deployed Link -  https://newblogapp.netlify.app
 
